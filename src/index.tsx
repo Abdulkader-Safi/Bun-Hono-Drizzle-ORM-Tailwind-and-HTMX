@@ -7,23 +7,21 @@ import Home from "./pages/Home";
 
 const app = new Hono();
 
-app.get("/", (c) => {
-  return c.html(<Home />);
-});
-
-app.get("/api/todos", async (c) => {
-  const results = await db.select().from(todos);
-
-  return c.html(
-    <>
-      {results.map((todo) => (
-        <TodoItem {...todo} />
-      ))}
-    </>
-  );
-});
-
 app
+  .get("/", (c) => {
+    return c.html(<Home />);
+  })
+  .get("/api/todos", async (c) => {
+    const results = await db.select().from(todos);
+
+    return c.html(
+      <>
+        {results.map((todo) => (
+          <TodoItem {...todo} />
+        ))}
+      </>,
+    );
+  })
   .post("/api/todo", async (c) => {
     const { content } = await c.req.json();
 

@@ -1,7 +1,15 @@
 export default function NewTodo() {
   return (
-    <form hx-post="/api/todo" hx-target="#todo-list" hx-swap="beforeend" hx-ext="json-enc">
-      <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+    <form
+      hx-post="/api/todo"
+      hx-target="#todo-list"
+      hx-swap="beforeend"
+      hx-ext="json-enc"
+    >
+      <label
+        for="content"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >
         Create a Todo
       </label>
       <textarea
